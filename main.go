@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // Create Book type
 type Book struct {
@@ -22,14 +25,34 @@ var bookList = []Book{
 
 func main() {
 	showBookList()
+	searchByBookName([]string{"harry potter ve felsefe taşı"})
 }
 
 // It returns the book list
-func showBookList(){
-	turkishLira:=string(rune(8378))
-	for _, v:= range bookList{
-		book:=fmt.Sprintf("\tAdı: %s\n \tYazarı: %s\n \tYayıncı: %s\n \tYayın Tarihi: %v\n \tFiyat: %.2f %v\n",v.Name,v.Author,v.Publisher,v.PublishDate,v.Price,turkishLira)
+func showBookList() {
+	turkishLira := string(rune(8378))
+	for _, v := range bookList {
+		book := fmt.Sprintf("\tAdı: %s\n \tYazarı: %s\n \tYayıncı: %s\n \tYayın Tarihi: %v\n \tFiyat: %.2f %v\n", v.Name, v.Author, v.Publisher, v.PublishDate, v.Price, turkishLira)
 		fmt.Println()
 		fmt.Println(book)
+	}
+}
+
+// It returns the book by book name
+func searchByBookName(n []string) {
+	check := false
+	turkishLira := string(rune(8378))
+	str := strings.Join(n, " ") // Slice to string
+	for _, v := range bookList {
+		if strings.EqualFold(strings.ToLower(v.Name), strings.ToLower(str)) {  // Check values
+			book := fmt.Sprintf("\tAdı: %s\n \tYazarı: %s\n \tYayıncı: %s\n \tYayın Tarihi: %v\n \tFiyat: %.2f %v\n", v.Name, v.Author, v.Publisher, v.PublishDate, v.Price,turkishLira)
+			fmt.Println()
+			fmt.Println(book)
+			check = true
+			break
+		}
+	}
+	if !check {
+		fmt.Printf("%v isimli kitap bulunmamaktadır!", str)
 	}
 }
