@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -24,8 +25,21 @@ var bookList = []Book{
 }
 
 func main() {
-	showBookList()
-	searchByBookName([]string{"harry potter ve felsefe taşı"})
+	manageArgs()
+}
+
+// It helps to manage command arguments
+func manageArgs() {
+	for _, cmd := range os.Args {
+		switch cmd {
+		case "list":
+			showBookList()
+		case "search":
+			if len(os.Args) > 2 {
+				searchByBookName(os.Args[2:])
+			}
+		}
+	}
 }
 
 // It returns the book list
@@ -44,8 +58,8 @@ func searchByBookName(n []string) {
 	turkishLira := string(rune(8378))
 	str := strings.Join(n, " ") // Slice to string
 	for _, v := range bookList {
-		if strings.EqualFold(strings.ToLower(v.Name), strings.ToLower(str)) {  // Check values
-			book := fmt.Sprintf("\tAdı: %s\n \tYazarı: %s\n \tYayıncı: %s\n \tYayın Tarihi: %v\n \tFiyat: %.2f %v\n", v.Name, v.Author, v.Publisher, v.PublishDate, v.Price,turkishLira)
+		if strings.EqualFold(strings.ToLower(v.Name), strings.ToLower(str)) { // Check values
+			book := fmt.Sprintf("\tAdı: %s\n \tYazarı: %s\n \tYayıncı: %s\n \tYayın Tarihi: %v\n \tFiyat: %.2f %v\n", v.Name, v.Author, v.Publisher, v.PublishDate, v.Price, turkishLira)
 			fmt.Println()
 			fmt.Println(book)
 			check = true
