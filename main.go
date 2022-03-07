@@ -21,7 +21,15 @@ var bookList = []Book{
 }
 
 func main() {
-	for _, v := range bookList {
-		fmt.Println(v)
+	showBookList()
+}
+
+// It returns the book list
+func showBookList(){
+	turkishLira:=string(rune(8378))
+	for _, v:= range bookList{
+		book:=fmt.Sprintf("\tAdı: %s\n \tYazarı: %s\n \tYayıncı: %s\n \tYayın Tarihi: %v\n \tFiyat: %.2f %v\n",v.Name,v.Author,v.Publisher,v.PublishDate,v.Price,turkishLira)
+		fmt.Println()
+		fmt.Println(book)
 	}
 }
