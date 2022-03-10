@@ -28,7 +28,7 @@ func main() {
 	manageArgs()
 }
 
-// It helps to manage command arguments
+// manageArgs helps to manage command arguments
 func manageArgs() {
 	for _, cmd := range os.Args {
 		switch cmd {
@@ -42,7 +42,7 @@ func manageArgs() {
 	}
 }
 
-// It returns the book list
+// showBookList returns the book list
 func showBookList() {
 	turkishLira := string(rune(8378))
 	for _, v := range bookList {
@@ -52,7 +52,7 @@ func showBookList() {
 	}
 }
 
-// It returns the book by book name
+// searchByBookName returns the book by book name
 func searchByBookName(n []string) {
 	check := false
 	turkishLira := string(rune(8378))
