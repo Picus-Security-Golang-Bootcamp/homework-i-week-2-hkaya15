@@ -1,16 +1,26 @@
-## Homework | Week 2
+# Week 2 | Homework
+This work is the second week homework of the [Picus Security](https://www.picussecurity.com) Golang Backend Web Development Bootcamp
+* It has added to getting book list feature
+* It has added to searching by book name feature
 
-Elimizde bir kitap listesi var. Bu uygulamanın 2 görevi var.
-1. Uygulama içerisindeki tüm kitapları çıktı olarak göstermek.
-2. Girdi olarak verilen kitap ismini varsa ekrana bastırmak yok ise kitabın mevcut olmadığına dair çıktı yazdırmak.
-
-### list command
+## Installation
+```bash 
+git clone https://github.com/Picus-Security-Golang-Bootcamp/homework-i-week-2-hkaya15.git
 ```
+
+## Usage
+
+```go
+// It returns book list
+
 go run main.go list
 ```
-Bu komut ile uygulama içerisindeki tüm kitapları çıktı olarak görmek istiyoruz.
 
-### search command 
-```
+```go 
+// It returns book by book name
+
 go run main.go search <bookName>
-go run main.go search Lord of the Ring: The Return of 
+```
+
+## License 
+[MIT](https://choosealicense.com/licenses/mit/)
